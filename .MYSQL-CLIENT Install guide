@@ -1,0 +1,9 @@
+# ----------------
+# Guide by AMIT
+# Assume you are activating Python 3 venv
+# This installation is for when you DO NOT want to install mysql server.
+# -----------------
+$ brew install mysql-client
+$ echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> ~/.bash_profile
+$ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+$ pip install mysqlclient

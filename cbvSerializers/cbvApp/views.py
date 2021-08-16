@@ -7,30 +7,44 @@ from .serializers import StudentSerializer
 # from rest_framework.response import Response
 # from rest_framework import serializers, status
 # from rest_framework.views import APIView
-from rest_framework import generics, mixins
+# from rest_framework import generics, mixins
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+
+
+################################################### 
+# Generics
+################################################### 
+class StudentList(ListCreateAPIView):
+     queryset = Student.objects.all()
+     serializer_class = StudentSerializer
+
+
+class StudentDetail(RetrieveUpdateDestroyAPIView):
+     queryset = Student.objects.all()
+     serializer_class = StudentSerializer
 
 ################################################### 
 # Mixins
 ################################################### 
-class StudentList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+# class StudentList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
     
-    def get(self, request):
-        return self.list(request)
+#     def get(self, request):
+#         return self.list(request)
     
-    def post(self, request):
-        return self.create(request)
+#     def post(self, request):
+#         return self.create(request)
     
-class StudentDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+# class StudentDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
     
-    def get(self, request, pk):
-        return self.retrieve(request, pk)
+#     def get(self, request, pk):
+#         return self.retrieve(request, pk)
     
-    def put(self, request, pk):
-        return self.destroy(request, pk)
+#     def put(self, request, pk):
+#         return self.destroy(request, pk)
 
 
 
